@@ -1,0 +1,21 @@
+{
+    "name": "ParamFilter",
+    "type": "library",
+    "require": {
+        "php": ">=5.6",
+        "illuminate/support": ">=5.4"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Sl\\Sec\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Ardit",
+            "email": "arditxh@starlabspro.com"
+        }
+    ],
+    "minimum-stability": "dev"
+}

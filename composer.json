@@ -1,5 +1,5 @@
 {
-    "name": "starLabs/paramFilter",
+    "name": "starLabs/paramfilter",
     "type": "library",
     "require": {
         "php": ">=5.6",

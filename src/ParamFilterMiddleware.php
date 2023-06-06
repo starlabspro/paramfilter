@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Redirect;
 class ParamFilterMiddleware
 {
     private $exceptUrls = [
-    // add urls that you don't want to delete the query params
+    // add urls that you don't want to remove the query params
     ];
 
     public function handle(Request $request, Closure $next)
@@ -45,10 +45,16 @@ class ParamFilterMiddleware
     {
         $parsedUrl = parse_url($url);
         if (isset($parsedUrl['query'])) {
-            $urlWithoutQuery = $parsedUrl['scheme'] . '://' . $parsedUrl['host'] .':'.$parsedUrl['port']. $parsedUrl['path'];
-            return Redirect::to($urlWithoutQuery);
+            $urlWithoutQuery = $parsedUrl['scheme'] . '://' . $parsedUrl['host'];
+
+            if (isset($parsedUrl['port'])) {
+                $urlWithoutQuery .= ':' . $parsedUrl['port'];
+            }
+
+            $urlWithoutQuery .= $parsedUrl['path'];
+            return redirect($urlWithoutQuery);
         }
 
-        return Redirect::to($url);
+        return redirect($url);
     }
 }

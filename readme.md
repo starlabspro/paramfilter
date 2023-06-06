@@ -4,8 +4,6 @@ To use the paramFilterMiddleware, you need to add it to your middleware stack. T
 Open the App\Http\Kernel class.
 
 Add the ParamFilter\ParamFilterMiddleware to the $middleware array:
-
-php
  
 protected $middleware = [
     // Other middleware...
@@ -13,7 +11,6 @@ protected $middleware = [
 ];
 Optionally, you can extend the ParamFilter\ParamFilterMiddleware class and override the customCheck() method to define your own custom logic for request processing.
 
-php
  
 use ParamFilter\ParamFilterMiddleware;
 
@@ -26,8 +23,6 @@ class CustomParamFilterMiddleware extends ParamFilterMiddleware
     }
 }
 If you have created a custom middleware class, update the $middleware array in App\Http\Kernel to use your custom middleware instead:
-
-php
  
 protected $middleware = [
     // Other middleware...
@@ -39,7 +34,6 @@ Customization
 Exempt URLs
 By default, the middleware removes query parameters from all URLs. However, you can specify exempt URLs where the query parameters should not be removed. To do this, add the exempt URLs to the $exceptUrls array in your custom middleware class or the ParamFilter\ParamFilterMiddleware class:
 
-php
  
 private $exceptUrls = [
     // Add URLs that you don't want to remove the query parameters

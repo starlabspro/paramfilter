@@ -12,12 +12,10 @@ Add the ParamFilter\ParamFilterMiddleware to the $middleware array:
 ##
 Optionally, you can extend the ParamFilter\ParamFilterMiddleware class and override the `customCheck()` method to define your own custom logic for request processing.
 ##
-`use ParamFilter\ParamFilterMiddleware;
-##
+`<?php 
+use ParamFilter\ParamFilterMiddleware;
 class CustomParamFilterMiddleware extends ParamFilterMiddleware
-##
 {
-##
     protected function customCheck(Request $request){
         // Custom logic for request processing
         // Return true to allow the request to proceed, or false to block it.
@@ -26,9 +24,7 @@ class CustomParamFilterMiddleware extends ParamFilterMiddleware
 `
 ##
 If you have created a custom middleware class, update the $middleware array in App\Http\Kernel to use your custom middleware instead:
-`
-##
-protected $middleware = [
+`protected $middleware = [
     // Other middleware...
     \App\Http\Middleware\CustomParamFilterMiddleware::class,
 ];

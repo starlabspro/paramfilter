@@ -18,14 +18,10 @@ class CustomParamFilterMiddleware extends ParamFilterMiddleware
 ##
 {
 ##
-    protected function customCheck(Request $request)
-##
-    {
-##
+    protected function customCheck(Request $request){
         // Custom logic for request processing
         // Return true to allow the request to proceed, or false to block it.
     }
-##
 }
 `
 ##
@@ -33,11 +29,8 @@ If you have created a custom middleware class, update the $middleware array in A
 `
 ##
 protected $middleware = [
-##
     // Other middleware...
     \App\Http\Middleware\CustomParamFilterMiddleware::class,
-##
-
 ];
 `
 ##
@@ -49,11 +42,9 @@ By default, the middleware removes query parameters from all URLs. However, you 
 ##
 `
 private $exceptUrls = [
-##
     // Add URLs that you don't want to remove the query parameters
     '/exempt-url-1',
     '/exempt-url-2',
-##
 ];
 `
 ##

@@ -1,32 +1,46 @@
 ## Usage
-To use the `paramFilterMiddleware`, you need to add it to your middleware stack. Typically, this is done in the App\Http\Kernel class.
+To use the `paramFilterMiddleware`, you need to add it to your middleware stack. Typically, this is done in the `App\Http\Kernel.php` class.
 
-Open the `App\Http\Kernel` class.
+Open the `App\Http\Kernel.php` class.
 
 Add the ParamFilter\ParamFilterMiddleware to the $middleware array:
 ##
- `protected $middleware = [// Other middleware...\ParamFilter\ParamFilterMiddleware::class];`
+ `protected $middleware = [
+// Other middleware...,
+ \ParamFilter\ParamFilterMiddleware::class
+ ];`
 ##
 Optionally, you can extend the ParamFilter\ParamFilterMiddleware class and override the `customCheck()` method to define your own custom logic for request processing.
 ##
 `use ParamFilter\ParamFilterMiddleware;
+##
 class CustomParamFilterMiddleware extends ParamFilterMiddleware
+##
 {
+##
     protected function customCheck(Request $request)
+##
     {
+##
         // Custom logic for request processing
         // Return true to allow the request to proceed, or false to block it.
     }
+##
 }
 `
 ##
 If you have created a custom middleware class, update the $middleware array in App\Http\Kernel to use your custom middleware instead:
 `
+##
 protected $middleware = [
+##
     // Other middleware...
     \App\Http\Middleware\CustomParamFilterMiddleware::class,
+##
+
 ];
 `
+##
 That's it! The `paramFilterMiddleware` package is now ready to handle query parameters in your Laravel application.
 
 ## Customization
@@ -35,9 +49,11 @@ By default, the middleware removes query parameters from all URLs. However, you 
 ##
 `
 private $exceptUrls = [
+##
     // Add URLs that you don't want to remove the query parameters
     '/exempt-url-1',
     '/exempt-url-2',
+##
 ];
 `
 ##

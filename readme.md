@@ -1,4 +1,4 @@
-Usage
+## Usage
 To use the paramFilterMiddleware, you need to add it to your middleware stack. Typically, this is done in the App\Http\Kernel class.
 
 Open the App\Http\Kernel class.
@@ -30,8 +30,8 @@ protected $middleware = [
 ];
 That's it! The paramFilterMiddleware package is now ready to handle query parameters in your Laravel application.
 
-Customization
-Exempt URLs
+## Customization
+Except URLs
 By default, the middleware removes query parameters from all URLs. However, you can specify exempt URLs where the query parameters should not be removed. To do this, add the exempt URLs to the $exceptUrls array in your custom middleware class or the ParamFilter\ParamFilterMiddleware class:
 
  
@@ -46,5 +46,5 @@ The middleware automatically redirects to a cleaner URL without query parameters
 Contributing
 Contributions are welcome! If you encounter any issues or have suggestions for improvements, please open an issue or submit a pull request on the GitHub repository.
 
-License
+## License
 This package is open-source software licensed under the MIT license.

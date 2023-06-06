@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 
-class ParamFilterMiddleware
+abstract class ParamFilterMiddleware
 {
     private $exceptUrls = [
     // add urls that you don't want to remove the query params
@@ -15,6 +15,13 @@ class ParamFilterMiddleware
     public function handle(Request $request, Closure $next)
     {
         $url = $request->fullUrl();
+        $classMethods = get_class_methods($this);
+
+        if (in_array('customCheck', $classMethods)) {
+            if ($this->customCheck($request)) {
+                return $next($request);
+            }
+        }
 
         if ($this->shouldCheckQueryParams($request) && $this->hasQueryParams($request)) {
             return $this->removeQueryParamsAndRedirect($url);
@@ -57,4 +64,6 @@ class ParamFilterMiddleware
 
         return redirect($url);
     }
+
+    abstract protected function customCheck(Request $request);
 }
